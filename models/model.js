@@ -6,20 +6,14 @@ const pgUrl = 'postgres://alfguear:EkAEG8_B8NI4rnfA65Ub4JY21payOBiS@bubble.db.el
 const URI = process.env.PG_URI || pgUrl
 
 
-const pool = new Pool({
-  connectionString: URI,
-});
-
+// initialize pool
+const pool = new Pool({connectionString: URI});
 console.log('connected');
 
 
 //initialize message table
-// message id
-// message text
-// message timestamp
-
 pool.query(
-  `CREATE TABLE IF NOT EXISTS messages (
+  `CREATE TABLE IF NOT EXISTS message (
     _id SERIAL PRIMARY KEY,
     message TEXT NOT NULL,
     created_at TIMESTAMP NOT NULL DEFAULT NOW()
