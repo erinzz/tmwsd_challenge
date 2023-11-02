@@ -13,8 +13,8 @@ router.post('/', messageController.postMessage, (req, res) =>{
   return res.status(200).json(res.locals.newMessage);
 })
 
-// router.delete('/:messageId', messageController.deleteMessage, (req, res) =>{
-//   return res.status(200).json();
-// })
+router.delete('/:messageId', messageController.deleteMessage, (req, res) =>{
+  return res.status(200).json(res.locals.deletedMessage);
+})
 
 module.exports = router

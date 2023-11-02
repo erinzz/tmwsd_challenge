@@ -26,7 +26,7 @@ messageController.postMessage = async (req, res, next) => {
     INSERT INTO Bulletin (message)
     VALUES ($1)
     RETURNING _id, message, created_at
-  `
+  `;
   const postParams = [message];
 
   try {
@@ -36,24 +36,35 @@ messageController.postMessage = async (req, res, next) => {
   } catch (err) {
     return next({
       log: 'error in postMessage middleware',
-      message: {err: 'An error occurred in postMessages middleware'}
+      message: {err: 'An error occurred in postMessage middleware'}
     })
   }
 }
 
-
-// messageController.deleteMessage = async (req, res, next) => {
-
-//   try {
-
-//     return next();
-//   } catch (err) {
-//     return next({
-//       msg: 'error in deleteMessage middleware',
-//       err: err
-//     })
-//   }
-// }
+// deletes message from database
+messageController.deleteMessage = async (req, res, next) => {
+  const messageId = req.params.messageId;
+  const delQuery = `
+    DELETE FROM Bulletin
+    WHERE _id = $1
+    RETURNING _id, message, created_at
+  `;
+  const delParams = [messageId]
+  // console.log("query", req.query)
+  // console.log("params", req.params)
+  // console.log("body", req.body)
+  console.log("messageid", delParams)
+  try {
+    res.locals.deletedMessage = (await db.query(delQuery, delParams)).rows
+    console.log('deleted message:', res.locals.deletedMessage)
+    return next();
+  } catch (err) {
+    return next({
+      log: 'error in deleteMessage middleware',
+      message: {err: 'An error occurred in deleteMessage middleware'}
+    })
+  }
+}
 
 
 
