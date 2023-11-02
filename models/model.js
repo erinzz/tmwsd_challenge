@@ -13,7 +13,7 @@ console.log('connected');
 
 //initialize message table
 pool.query(
-  `CREATE TABLE IF NOT EXISTS message (
+  `CREATE TABLE IF NOT EXISTS Bulletin (
     _id SERIAL PRIMARY KEY,
     message TEXT NOT NULL,
     created_at TIMESTAMP NOT NULL DEFAULT NOW()
