@@ -1,8 +1,8 @@
 const express = require('express')
 const router = express.Router()
-const db = require('../models/model')
+const messageController = require('../messageController')
 
-router.get('/', function (req, res) {
+router.get('/', (req, res) => {
   res.render('messages/index', { adjective: 'here' })
 })
 

@@ -9,6 +9,7 @@ const URI = process.env.PG_URI || pgUrl
 const pool = new Pool({
   connectionString: URI,
 });
+
 console.log('connected');
 
 
@@ -16,16 +17,17 @@ console.log('connected');
 // message id
 // message text
 // message timestamp
+
 pool.query(
-  `CREATE TABLE IF NOT EXISTS msgs (
+  `CREATE TABLE IF NOT EXISTS messages (
     _id SERIAL PRIMARY KEY,
-    msg TEXT NOT NULL,
+    message TEXT NOT NULL,
     created_at TIMESTAMP NOT NULL DEFAULT NOW()
-  )`;
-).catch(err) => {
-  console.log('An error occurred in creating message table:');
-  console.log(err);
-}
+  )`
+).catch((err) => {
+  console.error('An error occurred in creating message table:');
+  console.error(err);
+})
 
 
 // export model
