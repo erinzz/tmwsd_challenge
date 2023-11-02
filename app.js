@@ -1,10 +1,28 @@
-const express = require('express')
-const app = express()
-const port = 3000
+const express = require('express');
+const messagesRoute = require('./routes/messages');
+const port = 3000;
 
-const messagesRoute = require('./routes/messages')
-app.use('/', messagesRoute)
-app.set('view engine', 'pug')
+const app = express();
+app.use(express.json());
+
+
+app.use('/', messagesRoute);
+app.set('view engine', 'pug');
+
+
+// error handlers
+app.use('*', (req, res) => res.status(404).send('This page does not exist'));
+
+app.use((err, req, res, next) => {
+  const defaultErr = {
+    log: 'Express global error handler caught unknown middleware error',
+    status: 500,
+    message: {err: 'An error occurred'},
+  };
+  const errorObj = Object.assign({}, defaultErr, err);
+  return res.status(errorObj.status).json(errorObj.message);
+})
+
 
 app.listen(port, () => {
   console.log(`TMWSD is listening at http://localhost:${port}`)
