@@ -1,15 +1,14 @@
 const express = require('express');
 const messagesRoute = require('./routes/messages');
-const port = 3001;
+const port = 3002;
 
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended:true }))
 
 console.log('in app')
-app.use('/', messagesRoute);
 app.set('view engine', 'pug');
-
+app.use('/', messagesRoute);
 
 // error handlers
 app.use('*', (req, res) => res.status(404).send('This page does not exist'));

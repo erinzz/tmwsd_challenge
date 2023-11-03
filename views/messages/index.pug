@@ -1,1 +1,29 @@
-h1 TMWSD is #{adjective}!
+html
+  head
+    meta(charset="UTF=8")
+    title &#x1F4A3 Message
+    link(rel="stylesheet" href="../style.scss")
+  body
+    h1.main-title Welcome Back Agent!
+    div.form-container
+      form.post-msg-form(href="/messages" method="POST")
+        label Send &#x1F4A3 Message
+        textarea.post-msg-box(name="message" placeholder='Enter new message here' rows="6" cols="50")
+        button.post-btn Send
+    div.all-msg
+      h2 Messages:
+        div.msg-container
+          script
+
+          ul
+            each msg in messages
+              //- const msgURL = `http://localhost:3002/` + #{message._id}
+              //- #{ console.log("json", JSON.stringify(message._id)) }
+              //- #{ console.log("msgURL", msgURL) }
+              ol
+                a(href=`/messages/${msg._id}`) #{msg.message}
+
+
+
+
+
