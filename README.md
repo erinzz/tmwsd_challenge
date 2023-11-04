@@ -40,7 +40,7 @@ Once you have your application up and running. As a user you should be able to:
 - [] Messages ciphered upon security breach
 
 ## TODO!!
-[] hide elephantSQL db link
+[x] hide elephantSQL db link
 [] Hide messages for client in icon
 [] POST bug when refreshing page
 [] Add in edge cases

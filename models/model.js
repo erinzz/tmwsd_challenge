@@ -1,10 +1,9 @@
 const { Pool } = require('pg');
 
+require('dotenv').config()
+
 // elephantSQL database URI
-const pgUrl = 'postgres://alfguear:EkAEG8_B8NI4rnfA65Ub4JY21payOBiS@bubble.db.elephantsql.com/alfguear';
-
-const URI = process.env.PG_URI || pgUrl
-
+const pgUrl = process.env.PG_DB_URI;
 
 // initialize pool
 const pool = new Pool({connectionString: URI});
