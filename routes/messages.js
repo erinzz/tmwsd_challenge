@@ -2,8 +2,6 @@ const express = require('express')
 const router = express.Router()
 const messageController = require('../messageController')
 
-
-
 /**
 * Handles GET req endpoint
 * Retrieves all existing messages
@@ -19,6 +17,7 @@ router.get('/messages', messageController.getMessages, (req, res) => {
 * Handles POST req endpoint
 * Creates new message in database
 * Gets all existing messages including new message and updates homepage
+// bug - after POST sent, when user refreshes, causes form to be resubmitted with previous submission
 */
 router.post('/messages', messageController.postMessage, messageController.getMessages, (req, res) =>{
   console.log('in post router')
@@ -31,16 +30,19 @@ router.post('/messages', messageController.postMessage, messageController.getMes
 * Handles DELETE req endpoint
 * Deletes message at unique id in database
 * Opens up message in new page
-* Gets all existing messages excluding deleted message and updates homepage
 */
-router.get('/messages/:messageId', (req, res, next) => {
-  console.log('in delete router', req.body, req.params, req.query)
-  return next();
-}, messageController.deleteMessage, (req, res) =>{
-  console.log('in delete router again')
-  // renders message page
-  return res.render('messages/viewMsg', { deletedMessage: res.locals.deletedMessage});
+router.get('/messages/:messageId', messageController.deleteMessage, (req, res) =>{
+  console.log('in delete router again:', Boolean(res.locals.deletedMessage.length))
+
+  // database returns data object in an array
+  // messageContent selects message in deleted object
+  if (!res.locals.deletedMessage.length) {
+    return res.render('messages/404');
+  } else {
+    const messageContent = res.locals.deletedMessage[0].message
+    return res.render('messages/viewMsg', { deletedMessage: messageContent});
   // { deletedMessage: res.locals.deletedMessage }
+  }
 })
 
 

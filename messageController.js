@@ -6,7 +6,6 @@ const messageController = {};
 /**
 * Retrieves all messages in database
 */
-
 messageController.getMessages = async (req, res, next) => {
   console.log('in get msg')
   const getQuery =`SELECT * FROM Bulletin`;
@@ -22,13 +21,13 @@ messageController.getMessages = async (req, res, next) => {
     })
   }
 }
+
+
+
 /**
 * Create news message in database
 * Returns nothing
-* Redirects user to homepage with new message listed
-* Brings user back to homepage with new messages listed in message container
 */
-
 messageController.postMessage = async (req, res, next) => {
   console.log('in post msg middleware')
   const { message } = req.body;
@@ -52,12 +51,11 @@ messageController.postMessage = async (req, res, next) => {
 }
 
 
+
 /**
 * Deletes message with unique id from database
-* Returns
-* Redirects to GET all message so homepage no longer has deleted message listed
+* Returns deleted message
 */
-
 messageController.deleteMessage = async (req, res, next) => {
   console.log('in deleteMsg middleware')
   console.log(req.body, req.params, req.query)

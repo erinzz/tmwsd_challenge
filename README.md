@@ -4,7 +4,15 @@ A NodeJS programming challenge.
 
 The goal here is to create a simple web application that allows someone to create a message, view that message at a unique URL, and destroy the message upon viewing it. Just like the title states, this message will self-destruct!
 
-## Step 1: Installation
+
+Hello Agents!
+
+
+We have created simple web portal where you and fellow agents can send one another messages that will be destroyed upon opening. You will be able to read the message once and once only. So, be prepared! Write it down, memorize it; do whatever you need because there is no way to retrieve it again.
+
+Follow the instructions below to access the application locally:
+
+## Installation
 
 Fork this repository, clone it, install dependencies, and run it.
 
@@ -13,21 +21,30 @@ git clone {{your_fork_url_here}}
 npm install
 node app.js
 ```
+// installation instructions
 
-## Step 2: Complete the Requirements
 
-Complete the following requirements by using any database engine of your choice. Update this readme by checking the following boxes as you go.
+## Features
 
-- [x] As a user, I should see a form to create a new message on the homepage.
-- [x] As a user, I should see a list of links for all created messages below the 'new message' form on the homepage.
-- [x] As a user, when I click a link in the message list, I should be able to view the message at a unique URL.
-- [x] As a user, when I open a message, the message should self-destruct (delete from the database).
-- [x] As a user, I should no longer see messages on the homepage that have been viewed.
+Once you have your application up and running. As a user you should be able to:
 
-Two more things:
-* Remember to add documentation to your README so the app can be installed and run locally for review.
-* Bonus points for making it look pretty :sparkles:
+- [x] See a form to create a new message on the homepage.
+- [x] See a list of links for all created messages below the 'new message' form on the homepage.
+- [x] When you click a link in the message list, you should be able to view the message at a unique URL.
+- [x] When you open a message, the message will self-destruct (deleted from the database).
+- [x] You will no longer see messages on the homepage that have been viewed.
 
-## Step 3: Submit
 
-Send an email with a link to your fork when finished. Thanks!
+## Future features to come
+- [] Agent sign in portal
+- [] Messages ciphered upon security breach
+
+## TODO!!
+[] hide elephantSQL db link
+[] Hide messages for client in icon
+[] POST bug when refreshing page
+[] Add in edge cases
+[] CSS!
+[] ReadME instructions update
+[] Refactor
+[] Submit! Send an email with a link to your fork when finished. Thanks!

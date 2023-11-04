@@ -1,5 +1,5 @@
 html
-  head
+  header
     meta(charset="UTF=8")
     title &#x1F4A3 Message
     link(rel="stylesheet" href="../style.scss")
@@ -11,19 +11,16 @@ html
         textarea.post-msg-box(name="message" placeholder='Enter new message here' rows="6" cols="50")
         button.post-btn Send
     div.all-msg
-      h2 Messages:
-        div.msg-container
-          script
-
-          ul
-            each msg in messages
-              //- const msgURL = `http://localhost:3002/` + #{message._id}
-              //- #{ console.log("json", JSON.stringify(message._id)) }
-              //- #{ console.log("msgURL", msgURL) }
-              ol
-                a(href=`/messages/${msg._id}`) #{msg.message}
-
-
-
-
+      - console.log(message)
+      if (!message.length)
+        h2 You currently have no messages.
+      else
+        h2 Messages:
+          div.msg-container
+            script
+            ul
+              each msg in messages
+                ol
+                  //- TODO add icon to hide message; message can be read only when opened
+                  a(href=`/messages/${msg._id}`) #{msg.message}
 

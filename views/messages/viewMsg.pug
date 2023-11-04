@@ -1,13 +1,10 @@
 html
-  head
+  header
     title Secret Msg
     //- link(rel="stylesheet" href="../style.scss")
   body
-    //- if empty
-      //bring to page - does not exist
-
-    //- else
-      // show message
+    nav
+      a(href=`/messages`) Home Page
     h1 Message:
-    //- #{ console.log("json", JSON.stringify(deletedMessage)) }
-    h2 #{deletedMessage.message}
+    h2 #{deletedMessage}
+

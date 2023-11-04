@@ -10,9 +10,10 @@ console.log('in app')
 app.set('view engine', 'pug');
 app.use('/', messagesRoute);
 
-// error handlers
+// Catch all endpoint error handler
 app.use('*', (req, res) => res.status(404).send('This page does not exist'));
 
+// Global error handler
 app.use((err, req, res, next) => {
   const defaultErr = {
     log: 'Express global error handler caught unknown middleware error',
