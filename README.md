@@ -41,10 +41,10 @@ Once you have your application up and running. As a user you should be able to:
 
 ## TODO!!
 [x] hide elephantSQL db link
-[] Hide messages for client in icon
-[] POST bug when refreshing page
-[] Add in edge cases
 [] CSS!
+[] msg container data to agent number, date & time msg sent
+[] Add in edge cases
 [] ReadME instructions update
 [] Refactor
 [] Submit! Send an email with a link to your fork when finished. Thanks!
+[] POST bug when refreshing page

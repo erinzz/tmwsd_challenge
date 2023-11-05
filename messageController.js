@@ -7,11 +7,10 @@ const messageController = {};
 * Retrieves all messages in database
 */
 messageController.getMessages = async (req, res, next) => {
-  console.log('in get msg')
+  console.log('in get msg middleware')
   const getQuery =`SELECT * FROM Bulletin`;
   try {
     res.locals.messages = (await db.query(getQuery)).rows;
-    console.log('getmsg success', res.locals.messages)
     return next();
   } catch (err) {
     console.log('in catch')
@@ -58,7 +57,6 @@ messageController.postMessage = async (req, res, next) => {
 */
 messageController.deleteMessage = async (req, res, next) => {
   console.log('in deleteMsg middleware')
-  console.log(req.body, req.params, req.query)
   const messageId = req.params.messageId;
   const delQuery = `
     DELETE FROM Bulletin

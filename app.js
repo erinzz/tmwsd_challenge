@@ -1,6 +1,7 @@
 const express = require('express');
 const messagesRoute = require('./routes/messages');
 const port = 3002;
+const path = require('path');
 
 const app = express();
 app.use(express.json());
@@ -9,6 +10,9 @@ app.use(express.urlencoded({ extended:true }))
 console.log('in app')
 app.set('view engine', 'pug');
 app.use('/', messagesRoute);
+
+// Serve static files
+app.use(express.static(path.join(__dirname, 'assets')));
 
 // Catch all endpoint error handler
 app.use('*', (req, res) => res.status(404).send('This page does not exist'));

@@ -2,15 +2,14 @@ const { Pool } = require('pg');
 
 require('dotenv').config()
 
-// elephantSQL database URI
-const pgUrl = process.env.PG_DB_URI;
+// ElephantSQL database URI
+const PG_URI = process.env.PG_DB_URI;
 
-// initialize pool
-const pool = new Pool({connectionString: URI});
+// Initialize pool
+const pool = new Pool({connectionString: PG_URI});
 console.log('connected');
 
-
-//initialize message table
+// Initialize message table
 pool.query(
   `CREATE TABLE IF NOT EXISTS Bulletin (
     _id SERIAL PRIMARY KEY,
@@ -23,7 +22,7 @@ pool.query(
 })
 
 
-// export model
+// Export model
 module.exports = {
   query: (text, params, callback) => {
     console.log('executed query', text);

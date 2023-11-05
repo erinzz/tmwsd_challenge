@@ -2,25 +2,27 @@ html
   header
     meta(charset="UTF=8")
     title &#x1F4A3 Message
-    link(rel="stylesheet" href="../style.scss")
+    link(rel="stylesheet" href="/css/style.css")
+    script(src="/js/script.js")
+
   body
-    h1.main-title Welcome Back Agent!
-    div.form-container
-      form.post-msg-form(href="/messages" method="POST")
-        label Send &#x1F4A3 Message
-        textarea.post-msg-box(name="message" placeholder='Enter new message here' rows="6" cols="50")
-        button.post-btn Send
-    div.all-msg
-      - console.log(message)
+    h1.page-title Welcome Back Agent!
+    div.post-form-container
+      form.post-form(href="/messages" method="POST")
+        label.post-label Send &#x1F4A3 Message
+        textarea.post-box(name="message" placeholder="Enter new messsage here" rows="6" cols="50" required)
+        button.post-btn(value="Send Request" onclick="submitForm()") Send
+
+    div.msg-container
+      //- - console.log('msg frontend', message)
       if (!message.length)
-        h2 You currently have no messages.
+        h2.msg-empty You currently have no messages.
       else
-        h2 Messages:
-          div.msg-container
-            script
-            ul
-              each msg in messages
-                ol
-                  //- TODO add icon to hide message; message can be read only when opened
-                  a(href=`/messages/${msg._id}`) #{msg.message}
+        h2.msg-title Messages:
+        div.msg-list
+          ul
+            each msg in messages
+              li
+                //- TODO add icon to hide message; message can be read only when opened
+                a(href=`/messages/${msg._id}`) #{msg.message}
 
