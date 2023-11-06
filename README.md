@@ -38,4 +38,4 @@ Once you have your application up and running. As a user you should be able to:
 - [x] You will no longer see messages on the homepage that have been viewed.
 
 ### See below for a walkthrough of the app:
-<img src="./client/assets/ezgif.com-video-to-gif (1).gif" />
+<img src="./client/assets/ezgif.com-video-to-gif (1).gif" width="125%" height="125%" />
