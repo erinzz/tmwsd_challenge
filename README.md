@@ -39,12 +39,12 @@ Once you have your application up and running. As a user you should be able to:
 
 ### Demo:
 - Starting app
-https://github.com/erinzz/tmwsd_challenge/assets/95315514/a9995d6e-5e0b-499a-b18f-5d3dd1a9eb66
+![](https://github.com/erinzz/tmwsd_challenge/assets/95315514/a9995d6e-5e0b-499a-b18f-5d3dd1a9eb66)
 
 - Add new message
-https://github.com/erinzz/tmwsd_challenge/assets/95315514/0fa13bb5-d92b-4493-b57a-37d0b16fc044
+![](https://github.com/erinzz/tmwsd_challenge/assets/95315514/0fa13bb5-d92b-4493-b57a-37d0b16fc044)
 
 - View new message
-https://github.com/erinzz/tmwsd_challenge/assets/95315514/ddd10911-5f96-4a67-b085-b54e1df61bf0
+![](https://github.com/erinzz/tmwsd_challenge/assets/95315514/ddd10911-5f96-4a67-b085-b54e1df61bf0)
 
 
