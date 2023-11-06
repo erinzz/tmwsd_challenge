@@ -30,24 +30,12 @@ Additional resources to set up local and cloud server:
 
 
 ## Features
-<img src="./client/assets/ezgif.com-video-to-gif (1).gif" width="50%" height="50%" />
-
 Once you have your application up and running. As a user you should be able to:
-
 - [x] See a form to create a new message on the homepage.
 - [x] See a list of links for all created messages below the 'new message' form on the homepage.
 - [x] When you click a link in the message list, you should be able to view the message at a unique URL.
 - [x] When you open a message, the message will self-destruct (deleted from the database).
 - [x] You will no longer see messages on the homepage that have been viewed.
 
-## TODO!!
-- [x] hide elephantSQL db link
-- [x] CSS!
-- [x] ReadME instructions update
-- [x] msg container data to agent number, date & time msg sent
-- [x] Add controller file and redirect imports; add client and server folder if possible
-- [x] on submit alert not working
-- [x] Refactor & edge cases
-- [ ] Add gifs for readME
-- [ ] Submit! Send an email with a link to your fork when finished. Thanks!
-- [ ] POST bug when refreshing page
+### See below for a walkthrough of the app:
+<img src="./client/assets/ezgif.com-video-to-gif (1).gif" width="75%" height="75%" />
