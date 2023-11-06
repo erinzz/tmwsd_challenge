@@ -40,11 +40,13 @@ Once you have your application up and running. As a user you should be able to:
 - [x] You will no longer see messages on the homepage that have been viewed.
 
 ## TODO!!
-[x] hide elephantSQL db link
-[x] CSS!
-[x] ReadME instructions update
-[] msg container data to agent number, date & time msg sent
-[] Refactor & edge cases
-[] Add images for readME
-[] Submit! Send an email with a link to your fork when finished. Thanks!
-[] POST bug when refreshing page
+- [x] hide elephantSQL db link
+- [x] CSS!
+- [x] ReadME instructions update
+- [x] msg container data to agent number, date & time msg sent
+- [x] Add controller file and redirect imports; add client and server folder if possible
+- [x] on submit alert not working
+- [x] Refactor & edge cases
+- [ ] Add gifs for readME
+- [ ] Submit! Send an email with a link to your fork when finished. Thanks!
+- [ ] POST bug when refreshing page

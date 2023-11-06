@@ -2,16 +2,11 @@ html
   header
     title Secret Msg
     link(rel="stylesheet" href="/css/style.css")
-    script.
-      //- window.history.pushState(null, null, window.location.href);
-      //-   window.onpopstate = function () {
-      //-   window.history.go(1);
-      //- };
   body
-    .home-page-btn-container
+    div.home-page-btn-container
       button.home-page-btn
         a(href=`/messages`) Home
-    .viewMsg-container
+    div.viewMsg-container
       h2.viewMsg-title Message:
       h3.viewMsg-msg #{deletedMessage}
     p.viewMsg-notice This message will self-destruct.

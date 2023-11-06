@@ -1,6 +1,6 @@
 const express = require('express')
-const router = express.Router()
-const messageController = require('../messageController')
+const router = express.Router();
+const messageController = require('../controllers/messageController');
 
 
 /**
@@ -9,8 +9,10 @@ const messageController = require('../messageController')
 */
 router.get('/messages', messageController.getMessages, (req, res) => {
   console.log('in get router')
-  return res.status(200).render('messages/index', { message: res.locals.messages })
-})
+  const data = res.locals.messages;
+  console.log('data in get router', data)
+  return res.status(200).render('messages/index', { data: data });
+});
 
 
 /**
@@ -21,8 +23,9 @@ router.get('/messages', messageController.getMessages, (req, res) => {
 */
 router.post('/messages', messageController.postMessage, messageController.getMessages, (req, res) =>{
   console.log('in post router')
-  return res.status(200).render('messages/index', { message: res.locals.messages })
-})
+  const data = res.locals.messages;
+  return res.status(200).render('messages/index', { data: data });
+});
 
 
 /**
@@ -32,16 +35,15 @@ router.post('/messages', messageController.postMessage, messageController.getMes
 */
 router.get('/messages/:messageId', messageController.deleteMessage, (req, res) =>{
   console.log('in delete router')
-  // database returns data object in an array
-  // messageContent selects message in deleted object
-  if (!res.locals.deletedMessage.length) {
+  console.log('delete router', Boolean(res.locals.deletedMessage))
+  if (!res.locals.deletedMessage) {
     return res.render('messages/404');
   } else {
-    const messageContent = res.locals.deletedMessage[0].message
-    return res.status(200).render('messages/viewMsg', { deletedMessage: messageContent});
+    const messageContent = res.locals.deletedMessage.message;
+    return res.status(200).render('messages/viewMsg', { deletedMessage: messageContent });
   }
-})
+});
 
 
 
-module.exports = router
+module.exports = router;

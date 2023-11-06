@@ -1,25 +1,25 @@
 const express = require('express');
-const db = require('./models/model');
+const db = require('../models/model');
 
 const messageController = {};
 
 /**
 * Retrieves all messages in database
+* TODO only need to retrieve sender and date
 */
 messageController.getMessages = async (req, res, next) => {
   console.log('in get msg middleware')
   const getQuery =`SELECT * FROM Bulletin`;
   try {
-    res.locals.messages = (await db.query(getQuery)).rows;
+    res.locals.messages = await db.query(getQuery);
     return next();
   } catch (err) {
-    console.log('in catch')
     return next({
       log: 'error in getMessages middleware',
       message: {err: 'An error occurred in getMessages middleware'}
-    })
+    });
   }
-}
+};
 
 
 
@@ -29,25 +29,25 @@ messageController.getMessages = async (req, res, next) => {
 */
 messageController.postMessage = async (req, res, next) => {
   console.log('in post msg middleware')
-  const { message } = req.body;
+  const { sender, message } = req.body;
   const postQuery = `
-    INSERT INTO Bulletin (message)
-    VALUES ($1)
-    RETURNING _id, message, created_at
+    INSERT INTO Bulletin (sender, message)
+    VALUES ($1, $2)
+    RETURNING _id, sender, created_at
   `;
-  const postParams = [message];
-//
+  const postParams = [sender, message];
+
   try {
-    res.locals.newMessage = (await db.query(postQuery, postParams)).rows;
+    res.locals.newMessage = await db.query(postQuery, postParams);
     console.log('new record:',res.locals.newMessage)
     return next();
   } catch (err) {
     return next({
       log: 'error in postMessage middleware',
       message: {err: 'An error occurred in postMessage middleware'}
-    })
+    });
   }
-}
+};
 
 
 
@@ -63,19 +63,19 @@ messageController.deleteMessage = async (req, res, next) => {
     WHERE _id = $1
     RETURNING _id, message, created_at
   `;
-  const delParams = [messageId]
+  const delParams = [messageId];
 
   try {
-    res.locals.deletedMessage = (await db.query(delQuery, delParams)).rows
+    res.locals.deletedMessage = await db.queryOne(delQuery, delParams);
     console.log('deleted message:', res.locals.deletedMessage)
     return next();
   } catch (err) {
     return next({
       log: 'error in deleteMessage middleware',
       message: {err: 'An error occurred in deleteMessage middleware'}
-    })
+    });
   }
-}
+};
 
 
 

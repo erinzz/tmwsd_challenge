@@ -9,20 +9,29 @@ html
     h1.page-title Welcome Back Agent!
     div.post-form-container
       form.post-form(href="/messages" method="POST")
-        label.post-label Send &#x1F4A3 Message
-        textarea.post-box(name="message" placeholder="Enter new messsage here" rows="6" cols="50" required)
-        button.post-btn(value="Send Request" onclick="submitForm()") Send
+        label
+          h3.post-sender-label Agent Name:
+          textarea.post-sender-val(type="number" name="sender" placeholder="Enter name" rows="1" cols="50" maxlength="20" required)
+        label
+          h3.post-msg-label Message:
+          textarea.post-msg-val(name="message" placeholder="Enter new message" rows="6" cols="50" maxlength="100" required)
+        div.post-btn-container
+          button.post-btn(value="Send Request" onclick="submitForm()") Send
 
     div.msg-container
-      //- - console.log('msg frontend', message)
-      if (!message.length)
-        h2.msg-empty You currently have no messages.
+      if (!data.length)
+        h2.msg-title Inbox:
+          h2.msg-empty You currently have no messages.
       else
-        h2.msg-title Messages:
+        h2.msg-title Inbox:
         div.msg-list
           ul
-            each msg in messages
+            each msgData in data
               li
-                //- TODO add icon to hide message; message can be read only when opened
-                a(href=`/messages/${msg._id}`) #{msg.message}
+                div
+                  p Sender: #{msgData.sender}
+                  p Time: #{msgData.created_at}
+                button.view-msg-btn
+                  a(href=`/messages/${msgData._id}`) View
+
 
