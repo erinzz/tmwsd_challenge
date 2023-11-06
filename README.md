@@ -30,6 +30,7 @@ Additional resources to set up local and cloud server:
 
 
 ## Features
+<img src="./client/assets/ezgif.com-video-to-gif (1).gif" width="50%" height="50%" />
 
 Once you have your application up and running. As a user you should be able to:
 

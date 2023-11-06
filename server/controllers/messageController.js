@@ -5,11 +5,10 @@ const messageController = {};
 
 /**
 * Retrieves all messages in database
-* TODO only need to retrieve sender and date
 */
 messageController.getMessages = async (req, res, next) => {
-  console.log('in get msg middleware')
   const getQuery =`SELECT * FROM Bulletin`;
+
   try {
     res.locals.messages = await db.query(getQuery);
     return next();
@@ -22,24 +21,20 @@ messageController.getMessages = async (req, res, next) => {
 };
 
 
-
 /**
-* Create news message in database
+* Create new message in database
 * Returns nothing
 */
 messageController.postMessage = async (req, res, next) => {
-  console.log('in post msg middleware')
   const { sender, message } = req.body;
   const postQuery = `
     INSERT INTO Bulletin (sender, message)
     VALUES ($1, $2)
-    RETURNING _id, sender, created_at
   `;
   const postParams = [sender, message];
 
   try {
-    res.locals.newMessage = await db.query(postQuery, postParams);
-    console.log('new record:',res.locals.newMessage)
+    await db.query(postQuery, postParams);
     return next();
   } catch (err) {
     return next({
@@ -50,13 +45,11 @@ messageController.postMessage = async (req, res, next) => {
 };
 
 
-
 /**
 * Deletes message with unique id from database
 * Returns deleted message
 */
 messageController.deleteMessage = async (req, res, next) => {
-  console.log('in deleteMsg middleware')
   const messageId = req.params.messageId;
   const delQuery = `
     DELETE FROM Bulletin
@@ -67,7 +60,6 @@ messageController.deleteMessage = async (req, res, next) => {
 
   try {
     res.locals.deletedMessage = await db.queryOne(delQuery, delParams);
-    console.log('deleted message:', res.locals.deletedMessage)
     return next();
   } catch (err) {
     return next({
